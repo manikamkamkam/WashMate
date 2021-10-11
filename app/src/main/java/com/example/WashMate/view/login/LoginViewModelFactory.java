@@ -1,4 +1,4 @@
-package com.example.washmate.ui.login;
+package com.example.washmate.view.login;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;

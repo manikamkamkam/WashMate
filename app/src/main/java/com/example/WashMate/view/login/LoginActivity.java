@@ -1,4 +1,4 @@
-package com.example.washmate.ui.login;
+package com.example.washmate.view.login;
 
 import android.app.Activity;
 import android.os.Bundle;

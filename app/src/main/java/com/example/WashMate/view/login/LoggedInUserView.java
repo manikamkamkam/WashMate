@@ -1,4 +1,4 @@
-package com.example.washmate.ui.login;
+package com.example.washmate.view.login;
 
 /**
  * Class exposing authenticated user details to the UI.

@@ -1,4 +1,4 @@
-package com.example.washmate.ui.main;
+package com.example.washmate.view.main;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

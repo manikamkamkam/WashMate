@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/appointment"
-        android:name="com.example.washmate.ui.main.Appointment"
+        android:name="com.example.washmate.view.main.Appointment"
         android:label="fragment_appointment"
         tools:layout="@layout/fragment_appointment" />
     <fragment
         android:id="@+id/profile"
-        android:name="com.example.washmate.ui.main.Profile"
+        android:name="com.example.washmate.view.main.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/Fhome"
-        android:name="com.example.washmate.ui.main.Home"
+        android:name="com.example.washmate.view.main.Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 </navigation>
