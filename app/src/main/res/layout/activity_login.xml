@@ -72,7 +72,7 @@
         android:layout_height="55dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Please Login to Continue"
+        android:text="Login"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
