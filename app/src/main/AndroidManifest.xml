@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WashMateLogin">
         <activity
-            android:name=".ui.main.Home"
+            android:name=".view.main.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
