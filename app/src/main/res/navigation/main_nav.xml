@@ -3,21 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/Fhome">
+    app:startDestination="@id/fhome">
 
     <fragment
         android:id="@+id/appointment"
         android:name="com.example.washmate.view.main.Appointment"
         android:label="fragment_appointment"
-        tools:layout="@layout/fragment_appointment" />
+        tools:layout="@layout/fragment_appointment"
+
+        />
     <fragment
         android:id="@+id/profile"
         android:name="com.example.washmate.view.main.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/Fhome"
+        android:id="@+id/fhome"
         android:name="com.example.washmate.view.main.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home"/>
 </navigation>
