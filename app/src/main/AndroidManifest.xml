@@ -8,10 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WashMateLogin">
+        android:theme="@style/Theme.WashMate">
         <activity
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:name=".view.main.MainActivity"
+            android:name=".view.main.CustomerMainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

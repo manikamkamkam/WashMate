@@ -1,13 +1,25 @@
 package com.example.washmate.view.main;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import com.example.washmate.model.appointment;
 import com.example.washmate.R;
+
+import org.w3c.dom.Text;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,12 +66,83 @@ public class Appointment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_appointment, container, false);
+        return inflater.inflate(R.layout.customer_fragment_appointment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ListView appointmentlistView;
+        appointmentlistView = getView().findViewById(R.id.appointmentList);
+
+        ArrayList<appointment> appointments = new ArrayList<>();
+
+        // Use for example//
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Incoming"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Incoming"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Incoming"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Completed"));
+        appointments.add(new appointment("10 oct 2021 , 12:00 AM ","RM 500","ContratorName","Incoming"));
+
+// Use for example//
+        appointmentlistadapter adapter = new appointmentlistadapter(getActivity(),R.layout.appointmentlist_row,appointments);
+        appointmentlistView.setAdapter(adapter);
+    }
+}
+class appointmentlistadapter extends ArrayAdapter<appointment>
+{
+Context mcontext;
+int mresource;
+
+    public appointmentlistadapter(@NonNull Context context, int resource, @NonNull ArrayList<appointment> objects) {
+        super(context,resource,objects);
+       mcontext = context;
+       mresource = resource;
+
+    }
+
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        LayoutInflater layoutInflater = LayoutInflater.from(mcontext);
+        convertView = layoutInflater.inflate(mresource,parent,false);
+
+        TextView contratorname = convertView.findViewById(R.id.appointment_contracorname_row);
+        TextView date = convertView.findViewById(R.id.appointment_date_row);
+        TextView price = convertView.findViewById(R.id.appointment_price_row);
+        TextView status = convertView.findViewById(R.id.appointment_status_row);
+
+        contratorname.setText(getItem(position).getInchargeContratorName());
+        date.setText(getItem(position).getDate());
+        status.setText(getItem(position).getStatus());
+        price.setText(getItem(position).getPrice());
+
+        return convertView;
     }
 }
