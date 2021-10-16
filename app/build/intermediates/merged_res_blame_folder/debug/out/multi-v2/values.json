@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Users\\Koloje\\Documents\\Android_Studio_Projects\\WashMateAdminRecordPage2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\Users\\Koloje\\Documents\\GitHub\\WashMate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Koloje\\.gradle\\caches\\transforms-3\\81808270a5cc0559f2b9db87cb315b87\\transformed\\constraintlayout-2.1.1\\res\\values\\values.xml",
@@ -23,23 +23,6 @@
                     }
                 },
                 {
-                    "source": "D:\\Users\\Koloje\\Documents\\Android_Studio_Projects\\WashMateAdminRecordPage2\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "7,2,3,4,5,6,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "286,55,102,149,196,241,328",
-                        "endColumns": "41,46,46,46,44,44,41",
-                        "endOffsets": "323,97,144,191,236,281,365"
-                    },
-                    "to": {
-                        "startLines": "492,580,581,582,593,594,597",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "23790,29783,29830,29877,30621,30666,30832",
-                        "endColumns": "41,46,46,46,44,44,41",
-                        "endOffsets": "23827,29825,29872,29919,30661,30706,30869"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Koloje\\.gradle\\caches\\transforms-3\\1a721783f33f0b0f141ece40123d930b\\transformed\\jetified-appcompat-resources-1.3.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,29,36,47,74",
@@ -56,6 +39,23 @@
                         "endLines": "5299,5306,5317,8781,8786",
                         "endColumns": "24,24,24,24,24",
                         "endOffsets": "347960,348345,348942,524183,524453"
+                    }
+                },
+                {
+                    "source": "D:\\Users\\Koloje\\Documents\\GitHub\\WashMate\\app\\src\\main\\res\\values\\string.xml",
+                    "from": {
+                        "startLines": "5,3,2,13,7,15,6,11,4,9,17,10,14,12,8,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "211,105,55,585,301,682,255,503,158,425,797,463,636,543,351,761",
+                        "endColumns": "43,52,49,50,49,78,45,39,52,37,33,39,45,41,73,35",
+                        "endOffsets": "250,153,100,631,346,756,296,538,206,458,826,498,677,580,420,792"
+                    },
+                    "to": {
+                        "startLines": "1159,1187,1188,1197,1198,1199,1200,1201,1206,1265,1266,1272,1273,1276,1277,1278",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "66902,68812,68865,69859,69910,69960,70039,70085,70593,80302,80340,81176,81216,81386,81428,81502",
+                        "endColumns": "43,52,49,50,49,78,45,39,52,37,33,39,45,41,73,35",
+                        "endOffsets": "66941,68860,68910,69905,69955,70034,70080,70120,70641,80335,80369,81211,81257,81423,81497,81533"
                     }
                 },
                 {
@@ -94,6 +94,42 @@
                         "endLines": "64,5145,7165,7254",
                         "endColumns": "60,12,24,24",
                         "endOffsets": "3241,338880,442363,447574"
+                    }
+                },
+                {
+                    "source": "D:\\Users\\Koloje\\Documents\\GitHub\\WashMate\\app\\src\\main\\res\\values\\themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "100",
+                        "endLines": "14",
+                        "endColumns": "12",
+                        "endOffsets": "832"
+                    },
+                    "to": {
+                        "startLines": "4031",
+                        "startColumns": "4",
+                        "startOffsets": "266075",
+                        "endLines": "4043",
+                        "endColumns": "12",
+                        "endOffsets": "266805"
+                    }
+                },
+                {
+                    "source": "D:\\Users\\Koloje\\Documents\\GitHub\\WashMate\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "7,2,3,4,5,6,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "286,55,102,149,196,241,328",
+                        "endColumns": "41,46,46,46,44,44,41",
+                        "endOffsets": "323,97,144,191,236,281,365"
+                    },
+                    "to": {
+                        "startLines": "492,580,581,582,593,594,597",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "23790,29783,29830,29877,30621,30666,30832",
+                        "endColumns": "41,46,46,46,44,44,41",
+                        "endOffsets": "23827,29825,29872,29919,30661,30706,30869"
                     }
                 },
                 {
@@ -169,25 +205,6 @@
                     }
                 },
                 {
-                    "source": "D:\\Users\\Koloje\\Documents\\Android_Studio_Projects\\WashMateAdminRecordPage2\\app\\src\\main\\res\\values\\themes.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "100",
-                        "endLines": "14",
-                        "endColumns": "12",
-                        "endOffsets": "832"
-                    },
-                    "to": {
-                        "startLines": "4031",
-                        "startColumns": "4",
-                        "startOffsets": "266075",
-                        "endLines": "4043",
-                        "endColumns": "12",
-                        "endOffsets": "266805"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Koloje\\.gradle\\caches\\transforms-3\\f25280aa28dd02b1b0fe5958898387a3\\transformed\\lifecycle-runtime-2.3.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -257,23 +274,6 @@
                         "endLines": "33,501,502,503,504,681,682,683,1322,3298,3301,3304,6155",
                         "endColumns": "51,60,61,61,63,58,56,53,12,12,12,12,24",
                         "endOffsets": "1567,24529,24591,24653,24717,36489,36546,36600,84536,214434,214560,214688,394166"
-                    }
-                },
-                {
-                    "source": "D:\\Users\\Koloje\\Documents\\Android_Studio_Projects\\WashMateAdminRecordPage2\\app\\src\\main\\res\\values\\string.xml",
-                    "from": {
-                        "startLines": "5,3,2,13,7,15,6,11,4,9,17,10,14,12,8,16",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "211,105,55,585,301,682,255,503,158,425,797,463,636,543,351,761",
-                        "endColumns": "43,52,49,50,49,78,45,39,52,37,33,39,45,41,73,35",
-                        "endOffsets": "250,153,100,631,346,756,296,538,206,458,826,498,677,580,420,792"
-                    },
-                    "to": {
-                        "startLines": "1159,1187,1188,1197,1198,1199,1200,1201,1206,1265,1266,1272,1273,1276,1277,1278",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "66902,68812,68865,69859,69910,69960,70039,70085,70593,80302,80340,81176,81216,81386,81428,81502",
-                        "endColumns": "43,52,49,50,49,78,45,39,52,37,33,39,45,41,73,35",
-                        "endOffsets": "66941,68860,68910,69905,69955,70034,70080,70120,70641,80335,80369,81211,81257,81423,81497,81533"
                     }
                 },
                 {
