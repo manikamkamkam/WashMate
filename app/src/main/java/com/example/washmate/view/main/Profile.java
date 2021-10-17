@@ -1,10 +1,17 @@
 package com.example.washmate.view.main;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.example.washmate.model.customer;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.washmate.R;
@@ -27,6 +34,7 @@ public class Profile extends Fragment {
 
     public Profile() {
         // Required empty public constructor
+
     }
 
     /**
@@ -54,6 +62,7 @@ public class Profile extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -61,5 +70,45 @@ public class Profile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.customer_fragment_profile, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        EditText nameEditText = getView().findViewById(R.id.nameEditText);
+        EditText emailEditText = getView().findViewById(R.id.emailAddressEditText);
+        EditText phoeNoEditText = getView().findViewById(R.id.phoeNoEditText);
+        ImageView profilePic = getView().findViewById(R.id.profilePic);
+
+        nameEditText.setText(new customer().getUserName());
+        emailEditText.setText(new customer().getEmailAddress());
+        phoeNoEditText.setText(new customer().getPhoneNo());
+        Button editBtn = getView().findViewById(R.id.editTextBtn);
+        Button saveBtn = getView().findViewById(R.id.saveBtn);
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                nameEditText.setEnabled(true);
+                emailEditText.setEnabled(true);
+                phoeNoEditText.setEnabled(true);
+                saveBtn.setVisibility(View.VISIBLE);
+            }
+
+        });
+
+        saveBtn.setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View v)
+            {
+                nameEditText.setEnabled(false);
+                emailEditText.setEnabled(false);
+                phoeNoEditText.setEnabled(false);
+                saveBtn.setVisibility(View.GONE);
+
+            }
+        });
+
+
+
+
     }
 }
