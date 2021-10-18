@@ -1,6 +1,5 @@
-package com.example.washmate.view.main;
+package com.example.washmate.view.customer;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -1,8 +1,7 @@
-package com.example.washmate.view.main;
+package com.example.washmate.view.customer;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.washmate.model.appointment;
 import com.example.washmate.R;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -133,8 +128,8 @@ int mresource;
         LayoutInflater layoutInflater = LayoutInflater.from(mcontext);
         convertView = layoutInflater.inflate(mresource,parent,false);
 
-        TextView contratorname = convertView.findViewById(R.id.appointment_contracorname_row);
-        TextView date = convertView.findViewById(R.id.appointment_date_row);
+        TextView contratorname = convertView.findViewById(R.id.car_numberPlate);
+        TextView date = convertView.findViewById(R.id.carType);
         TextView price = convertView.findViewById(R.id.appointment_price_row);
         TextView status = convertView.findViewById(R.id.appointment_status_row);
 

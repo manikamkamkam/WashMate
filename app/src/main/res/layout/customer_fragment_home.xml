@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".view.main.Home"
+    tools:context=".view.customer.Home"
 
     >
 
@@ -63,8 +63,8 @@
         tools:layout_editor_absoluteX="108dp">
 
 
-
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
@@ -82,7 +82,7 @@
                 android:contentDescription="@string/app_name"
                 android:labelFor="@+id/carwasBtn"
                 android:scaleType="centerInside"
-                android:src="@drawable/carwashicon" />
+                android:src="@drawable/carwash" />
 
             <TextView
                 android:id="@+id/carwaslabel"
@@ -94,6 +94,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
@@ -119,6 +120,66 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="History"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="144dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <ImageButton
+                android:id="@+id/mycarsBtn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:background="@null"
+                android:contentDescription="@string/app_name"
+                android:labelFor="@+id/mycarsBtn"
+                android:scaleType="centerInside"
+                android:src="@drawable/mycars" />
+
+            <TextView
+                android:id="@+id/mycarsLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="My cars"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="144dp"
+            android:layout_marginEnd="48dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <ImageButton
+                android:id="@+id/AboutUsBtn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:background="@null"
+                android:contentDescription="@string/app_name"
+                android:labelFor="@+id/AboutUsBtn"
+                android:scaleType="centerInside"
+                android:src="@drawable/aboutus" />
+
+            <TextView
+                android:id="@+id/AboutUsLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="About Us"
                 android:textStyle="bold" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

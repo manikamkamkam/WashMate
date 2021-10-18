@@ -15,7 +15,7 @@
         android:paddingBottom="10dp">
 
         <TextView
-            android:id="@+id/appointment_contracorname_row"
+            android:id="@+id/car_numberPlate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
@@ -27,7 +27,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/appointment_date_row"
+            android:id="@+id/carType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"

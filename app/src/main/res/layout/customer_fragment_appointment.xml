@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.main.Appointment" >
+    tools:context=".view.customer.Appointment" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
@@ -19,10 +19,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
             android:text="Appointment List"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/tiffany"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.49"

@@ -1,4 +1,4 @@
-package com.example.washmate.view.main
+package com.example.washmate.view.customer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
