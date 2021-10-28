@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "200204497478",
+    "project_id": "washmate-73a6d",
+    "storage_bucket": "washmate-73a6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200204497478:android:8842f298096d6445c65047",
+        "android_client_info": {
+          "package_name": "com.example.washmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "200204497478-cnm4fsit9qtoatlpakbpedrd40l3q70e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvQhX5eB0YAvQtWjGsz1wDt_Ri7GV3BpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "200204497478-cnm4fsit9qtoatlpakbpedrd40l3q70e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

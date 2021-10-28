@@ -15,7 +15,7 @@ class CustomerMainActivity : AppCompatActivity() {
 
         val navView = findViewById<BottomNavigationView>(R.id.customerBottomNavView)
         val navController =  findNavController(R.id.customerViewFragment)
-        AppBarConfiguration(setOf(R.id.home,R.id.customer_appointment,R.id.customer_profile))
+        AppBarConfiguration(setOf(R.id.customer_home,R.id.customer_appointment,R.id.customer_profile))
         navView.setupWithNavController(navController)
 
     }
