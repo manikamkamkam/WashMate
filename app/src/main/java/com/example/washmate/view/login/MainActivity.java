@@ -3,6 +3,8 @@ package com.example.washmate.view.login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mloginBtn = findViewById(R.id.loginButton);
 
 
+
         mloginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,9 +95,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void checkRole(String uid)
+    public void checkRole(String Uid)
     {
-        DocumentReference reference = fStore.collection("Users").document(uid);
+        DocumentReference reference = fStore.collection("Users").document(Uid);
         reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -106,17 +109,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 if(documentSnapshot.getString("isCont") != null)
                 {
-                    user = new contractor(documentSnapshot.getString("FullName"),documentSnapshot.getString("UserEmail"),documentSnapshot.getString("PhoneNo"));
+                    //testing email and password contractor@cont.com | customer
+                    user = new contractor(Uid,documentSnapshot.getString("FullName"),documentSnapshot.getString("UserEmail"),documentSnapshot.getString("PhoneNo"));
                     user.login();
                     startActivity(new Intent(getApplicationContext(), contractorMainActivity.class));
-
+                    finish();
 
                 }
                 if (documentSnapshot.getString("isCust") != null )
                 {
-                    user = new customer(documentSnapshot.getString("FullName"),documentSnapshot.getString("UserEmail"),documentSnapshot.getString("PhoneNo"));
+                    //testing email and password customer@cust.com | customer
+                    user = new customer(Uid,documentSnapshot.getString("FullName"),documentSnapshot.getString("UserEmail"),documentSnapshot.getString("PhoneNo"));
                     user.login();
                     startActivity(new Intent(getApplicationContext(),CustomerMainActivity.class));
+                    finish();
                 }
             }
 

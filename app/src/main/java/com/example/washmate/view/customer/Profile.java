@@ -9,14 +9,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.example.washmate.model.role.User;
-import com.example.washmate.model.role.customer;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.washmate.R;
+import com.example.washmate.model.role.User;
+import com.example.washmate.view.loadingDialog.LoadingDialog;
 import com.example.washmate.view.login.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -27,7 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class Profile extends Fragment {
 
-    private static User LoggedInUser = User.getLoggedinUser();
+    private User loggedInUser = User.getLoggedinUser();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -81,20 +82,21 @@ public class Profile extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         EditText nameEditText = getView().findViewById(R.id.nameEditText);
         EditText emailEditText = getView().findViewById(R.id.emailAddressEditText);
-        EditText phoeNoEditText = getView().findViewById(R.id.phoeNoEditText);
+        EditText phoneNoEditText = getView().findViewById(R.id.phoeNoEditText);
         ImageView profilePic = getView().findViewById(R.id.profilePic);
 
-        nameEditText.setText(LoggedInUser.getFullName());
-        emailEditText.setText(LoggedInUser.getEmail());
-        phoeNoEditText.setText(LoggedInUser.getPhoneNumber());
+        nameEditText.setText(loggedInUser.getFullName());
+        emailEditText.setText(loggedInUser.getEmail());
+        phoneNoEditText.setText(loggedInUser.getPhoneNumber());
         Button editBtn = getView().findViewById(R.id.editTextBtn);
         Button saveBtn = getView().findViewById(R.id.saveBtn);
         Button logoutBtn = getView().findViewById(R.id.logOutBtn);
+
         editBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 nameEditText.setEnabled(true);
                 emailEditText.setEnabled(true);
-                phoeNoEditText.setEnabled(true);
+                phoneNoEditText.setEnabled(true);
                 saveBtn.setVisibility(View.VISIBLE);
             }
 
@@ -104,12 +106,48 @@ public class Profile extends Fragment {
 
             public void onClick(View v)
             {
-                nameEditText.setEnabled(false);
-                emailEditText.setEnabled(false);
-                phoeNoEditText.setEnabled(false);
-                saveBtn.setVisibility(View.GONE);
 
-            }
+                    LoadingDialog ld = new LoadingDialog(getActivity());
+                    loggedInUser.updateUserEmail(emailEditText.getText().toString(), new User.emailCallBack(){
+                        @Override
+                        public void isEmailAvailable(boolean available) {
+                            if(available)
+                            {
+                                    loggedInUser.isPhoneNoAvailable(phoneNoEditText.getText().toString(),new User.PhoneNoCallBack(){
+                                    @Override
+                                    public void isPhoneNoAvailable(boolean available) {
+                                        if (available) {
+                                            ld.dismissDialog();
+                                            loggedInUser.updateUserDetailsToFirebase(nameEditText.getText().toString(), emailEditText.getText().toString(), phoneNoEditText.getText().toString());
+                                            nameEditText.setEnabled(false);
+                                            emailEditText.setEnabled(false);
+                                            phoneNoEditText.setEnabled(false);
+                                            saveBtn.setVisibility(View.GONE);
+
+                                        } else {
+                                            ld.dismissDialog();
+                                            phoneNoEditText.setError("Please try another Phone Number");
+                                            Toast.makeText(getContext(), "This Phone Number is already used , please try another", Toast.LENGTH_LONG);
+                                        }
+                                    }
+                                });
+
+                            }
+                            else
+                            {
+                                ld.dismissDialog();
+                                emailEditText.setError("Please try another email");
+                                Toast.makeText(getContext(),"This email is already used , please try another",Toast.LENGTH_LONG);
+                            }
+                        }
+                    });
+                    ld.startLoadingDialog();
+
+                    }
+
+
+
+
         });
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,26 +164,21 @@ public class Profile extends Fragment {
                 posBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        loggedInUser.loggedout();
                         startActivity(new Intent(getContext(),MainActivity.class));
+                      getActivity().finish();
                     }
                 });
                 negBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         FirebaseAuth.getInstance().signOut();
-                       logoutDialog.dismiss();
-                       getActivity().finish();
+                        logoutDialog.dismiss();
+
                     }
                 });
 
             }
         });
-
-
-
-
-
-
-
     }
 }

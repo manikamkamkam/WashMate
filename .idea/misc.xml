@@ -61,6 +61,13 @@
         <entry key="..\:/Users/Koloje/Documents/GitHub/WashMate/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/Koloje/Documents/GitHub/WashMate/app/src/main/res/layout/fragment_profile.xml" value="0.21875" />
         <entry key="..\:/Users/Koloje/Documents/GitHub/WashMate/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/contrator_fragment_home.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/customer_activity_main.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/customer_carwash_activity.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/customer_fragment_appointment.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/customer_fragment_home.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/customer_fragment_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/loading_dialog.xml" value="0.33" />
       </map>
     </option>
   </component>
