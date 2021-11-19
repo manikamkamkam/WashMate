@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.washmate.model.appointment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -20,13 +21,7 @@ public abstract class User{
     String Email;
     String PhoneNumber;
 
-    private static User loggedinUser;
 
-
-   public User()
-   {
-
-   }
 
     public String getUId() {
         return Uid;
@@ -36,24 +31,11 @@ public abstract class User{
         Uid = userId;
     }
 
-    public static User getLoggedinUser() {
-        return loggedinUser;
-    }
-    public static void setLoggedinUser(administrator user) {
-       loggedinUser = user;
-    }
-    public static void setLoggedinUser(customer user)
-    {
-        loggedinUser = user;
-    }
-    public static void setLoggedinUser(contractor user)
-    {
-        loggedinUser = user;
-    }
+
+
 
     public void loggedout()
     {
-        loggedinUser = null;
         FirebaseAuth.getInstance().signOut();
     }
 
@@ -82,10 +64,15 @@ public abstract class User{
         PhoneNumber = phoneNumber;
     }
 
-    public abstract  void login();
+    public abstract void setloginUser();
+
+    public interface TaskCallback
+    {
+        public void taskCompleted(boolean isCompleted);
+    }
 
 
-   public void updateUserDetailsToFirebase(String fullName,String email,String phoneNo)
+   public void updateUserDetailsToFirebase(String fullName,String email,String phoneNo,TaskCallback callback)
    {
        FirebaseFirestore.getInstance().collection("Users")
                .document(this.getUId())
@@ -95,6 +82,7 @@ public abstract class User{
                    public void onSuccess(Void unused) {
                        Log.d("updateProfile", "onSuccess: "+"Updated!");
                        setFullName(fullName);setPhoneNumber(phoneNo);
+                       callback.taskCompleted(true);
                    }
                }).addOnFailureListener(new OnFailureListener() {
            @Override
@@ -146,17 +134,19 @@ public abstract class User{
                         if (task.isSuccessful()) {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if(document.getId() != getUId())
+                                if(!document.getId().equals(getUId()))
                                 {
                                     isAvailable = false;
+                                    Log.d("phoneNo", document.getId() + "uuid of current user"+ getUId()+ " => " + document.getData());
                                 }
-                                Log.d("phoneNo", document.getId() + " => " + document.getData());
+
                             }
                             phoneNoCallBack.isPhoneNoAvailable(isAvailable);
                         } else {
-                            phoneNoCallBack.isPhoneNoAvailable(false);
+
                         }
                     }
                 });
     }
+
 }

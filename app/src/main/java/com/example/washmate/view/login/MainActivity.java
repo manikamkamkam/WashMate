@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mloginBtn;
     private FirebaseAuth fAuth;
     private FirebaseFirestore fStore;
-    private User user;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +110,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(documentSnapshot.getString("isCont") != null)
                 {
                     //testing email and password contractor@cont.com | customer
-                    user = new contractor(Uid,documentSnapshot.getString("FullName"),documentSnapshot.getString("UserEmail"),documentSnapshot.getString("PhoneNo"));
-                    user.login();
+                    contractor cont = new contractor(Uid,documentSnapshot.getString("FullName"),documentSnapshot.getString("UserEmail"),documentSnapshot.getString("PhoneNo"));
+                    cont.setloginUser();
                     startActivity(new Intent(getApplicationContext(), contractorMainActivity.class));
                     finish();
 
@@ -119,8 +119,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (documentSnapshot.getString("isCust") != null )
                 {
                     //testing email and password customer@cust.com | customer
-                    user = new customer(Uid,documentSnapshot.getString("FullName"),documentSnapshot.getString("UserEmail"),documentSnapshot.getString("PhoneNo"));
-                    user.login();
+                    customer cust = new customer(Uid,documentSnapshot.getString("FullName"),documentSnapshot.getString("UserEmail"),documentSnapshot.getString("PhoneNo"));
+                    cust.setloginUser();
                     startActivity(new Intent(getApplicationContext(),CustomerMainActivity.class));
                     finish();
                 }

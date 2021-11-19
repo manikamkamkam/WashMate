@@ -15,22 +15,15 @@ import com.example.washmate.R;
 
 import java.util.Calendar;
 
-public class timePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+public class timePickerFragment extends DialogFragment {
+
     @NonNull
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
-        int min = c.get(Calendar.MINUTE);
+        int minute = c.get(Calendar.MINUTE);
 
-
-        return new TimePickerDialog(getActivity(),this,hour,min, DateFormat.is24HourFormat(getActivity()));
-
-    }
-
-    @Override
-    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
-        EditText time = getView().findViewById(R.id.appointment_time);
-        time.setText(hourOfDay+" : "+minute);
+        return new TimePickerDialog(getActivity(), (TimePickerDialog.OnTimeSetListener) getActivity(), hour, minute, DateFormat.is24HourFormat(getActivity()));
     }
 }

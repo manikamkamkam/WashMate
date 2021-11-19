@@ -2,6 +2,7 @@ package com.example.washmate.model.role;
 
 public class contractor extends User{
 
+    static contractor LoggedinUser;
     public contractor(String Uid,String name,String email,String phoneNo)
     {
         setUId(Uid);
@@ -9,12 +10,11 @@ public class contractor extends User{
         setFullName(name);
         setPhoneNumber(phoneNo);
     }
+
+
+
     @Override
-    public void login() {
-
-        setLoggedinUser(this);
+    public void setloginUser() {
+    LoggedinUser = this;
     }
-
-
-
 }

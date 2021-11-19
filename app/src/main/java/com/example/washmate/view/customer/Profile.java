@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,7 +18,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.washmate.R;
 import com.example.washmate.model.role.User;
-import com.example.washmate.view.loadingDialog.LoadingDialog;
+import com.example.washmate.model.role.customer;
+import com.example.washmate.view.customDialog.LoadingDialog;
 import com.example.washmate.view.login.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -28,7 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class Profile extends Fragment {
 
-    private User loggedInUser = User.getLoggedinUser();
+    private final customer loginUser = customer.getLoggedinUser();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -83,11 +85,7 @@ public class Profile extends Fragment {
         EditText nameEditText = getView().findViewById(R.id.nameEditText);
         EditText emailEditText = getView().findViewById(R.id.emailAddressEditText);
         EditText phoneNoEditText = getView().findViewById(R.id.phoeNoEditText);
-        ImageView profilePic = getView().findViewById(R.id.profilePic);
-
-        nameEditText.setText(loggedInUser.getFullName());
-        emailEditText.setText(loggedInUser.getEmail());
-        phoneNoEditText.setText(loggedInUser.getPhoneNumber());
+        updateView();
         Button editBtn = getView().findViewById(R.id.editTextBtn);
         Button saveBtn = getView().findViewById(R.id.saveBtn);
         Button logoutBtn = getView().findViewById(R.id.logOutBtn);
@@ -108,21 +106,28 @@ public class Profile extends Fragment {
             {
 
                     LoadingDialog ld = new LoadingDialog(getActivity());
-                    loggedInUser.updateUserEmail(emailEditText.getText().toString(), new User.emailCallBack(){
+                    loginUser.updateUserEmail(emailEditText.getText().toString(), new User.emailCallBack(){
                         @Override
                         public void isEmailAvailable(boolean available) {
                             if(available)
                             {
-                                    loggedInUser.isPhoneNoAvailable(phoneNoEditText.getText().toString(),new User.PhoneNoCallBack(){
+                                    loginUser.isPhoneNoAvailable(phoneNoEditText.getText().toString(),new User.PhoneNoCallBack(){
                                     @Override
                                     public void isPhoneNoAvailable(boolean available) {
                                         if (available) {
-                                            ld.dismissDialog();
-                                            loggedInUser.updateUserDetailsToFirebase(nameEditText.getText().toString(), emailEditText.getText().toString(), phoneNoEditText.getText().toString());
+
+                                            loginUser.updateUserDetailsToFirebase(nameEditText.getText().toString(), emailEditText.getText().toString(), phoneNoEditText.getText().toString(), new User.TaskCallback() {
+                                                @Override
+                                                public void taskCompleted(boolean isCompleted) {
+                                                    ld.dismissDialog();
+                                                    updateView();
+                                                }
+                                            });
                                             nameEditText.setEnabled(false);
                                             emailEditText.setEnabled(false);
                                             phoneNoEditText.setEnabled(false);
                                             saveBtn.setVisibility(View.GONE);
+
 
                                         } else {
                                             ld.dismissDialog();
@@ -164,7 +169,7 @@ public class Profile extends Fragment {
                 posBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        loggedInUser.loggedout();
+                        loginUser.loggedout();
                         startActivity(new Intent(getContext(),MainActivity.class));
                       getActivity().finish();
                     }
@@ -180,5 +185,22 @@ public class Profile extends Fragment {
 
             }
         });
+    }
+
+    private void updateView()
+    {
+        EditText nameEditText = getView().findViewById(R.id.nameEditText);
+        EditText emailEditText = getView().findViewById(R.id.emailAddressEditText);
+        EditText phoneNoEditText = getView().findViewById(R.id.phoeNoEditText);
+        TextView nameTextView = getView().findViewById(R.id.userName);
+        TextView emailTextView = getView().findViewById(R.id.userEmail);
+
+        nameEditText.setText(loginUser.getFullName());
+        emailEditText.setText(loginUser.getEmail());
+        phoneNoEditText.setText(loginUser.getPhoneNumber());
+        nameTextView.setText(loginUser.getFullName());
+        emailTextView.setText(loginUser.getEmail());
+
+
     }
 }

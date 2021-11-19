@@ -10,10 +10,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.example.washmate.model.appointment;
 import com.example.washmate.R;
-import com.example.washmate.view.customDialog.LoadingDialog;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * Use the {@link Appointment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Appointment extends Fragment {
+public class HistoryActivity extends AppCompatActivity {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,7 +33,7 @@ public class Appointment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Appointment() {
+    public HistoryActivity() {
         // Required empty public constructor
     }
 
@@ -55,34 +55,17 @@ public class Appointment extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.customer_fragment_appointment, container, false);
-    }
 
     ListView appointmentlistView;
     ArrayList<appointment> appointments;
-    LoadingDialog ld ;
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        appointmentlistView = getView().findViewById(R.id.appointmentList);
-        ld = new LoadingDialog(getActivity());
-        ld.startLoadingDialog();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+         setContentView(R.layout.customer_history_activity);
+        appointmentlistView = findViewById(R.id.appointmentList);
+
 
 
 
@@ -96,7 +79,7 @@ public class Appointment extends Fragment {
     }
 
     private void readyToUpdate() {
-        appointments = new appointment().getCurrentUsersAppoinmentWithStatusPending(new appointment.TaskCompletedCallBack() {
+        appointments = new appointment().getCurrentUsersAppoinmentWithStatusCompleted(new appointment.TaskCompletedCallBack() {
             @Override
             public void isTaskCompleted(boolean isCompleted) {
                 updateView();
@@ -105,9 +88,8 @@ public class Appointment extends Fragment {
     }
 
     private void updateView() {
-        appointmentlistadapter adapter = new appointmentlistadapter(getActivity(), R.layout.appointmentlist_row, appointments);
+        appointmentlistadapter adapter = new appointmentlistadapter(this, R.layout.appointmentlist_row, appointments);
         appointmentlistView.setAdapter(adapter);
-        ld.dismissDialog();
     }
 
     class appointmentlistadapter extends ArrayAdapter<appointment> {
@@ -136,7 +118,7 @@ public class Appointment extends Fragment {
             TextView status = convertView.findViewById(R.id.appointment_status_row);
 
             if(getItem(position).getInchargeContratorName()!=null)
-            contratorname.setText(getItem(position).getInchargeContratorName());
+                contratorname.setText(getItem(position).getInchargeContratorName());
             else contratorname.setText("Waiting for contractor");
 
 

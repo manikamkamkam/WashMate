@@ -1,4 +1,4 @@
-package com.example.washmate.view.loadingDialog;
+package com.example.washmate.view.customDialog;
 
 import android.app.Activity;
 import android.app.AlertDialog;

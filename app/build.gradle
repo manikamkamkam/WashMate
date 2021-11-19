@@ -5,9 +5,13 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+
+
 }
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdk 31
 
@@ -54,6 +58,10 @@ dependencies {
     implementation 'com.wdullaer:materialdatetimepicker:2.3.0'
     implementation 'com.google.firebase:firebase-database:19.2.1'
     implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.stripe:stripe-android:14.5.0'
+    implementation 'com.google.firebase:firebase-common-ktx:20.0.0'
+    implementation 'com.google.firebase:firebase-functions-ktx:20.0.1'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

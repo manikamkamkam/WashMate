@@ -32,7 +32,7 @@
             android:exported="true"
             android:label="@string/app_name"
             />
-        <activity android:name=".view.customer.addCarActiviti"
+        <activity android:name=".view.customer.addCarActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="true"
             android:label="@string/app_name"
@@ -43,6 +43,11 @@
             android:label="@string/app_name"
             />
         <activity android:name=".view.contractor.contractorMainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="true"
+            android:label="@string/app_name"
+            />
+        <activity android:name=".view.customer.HistoryActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="true"
             android:label="@string/app_name"

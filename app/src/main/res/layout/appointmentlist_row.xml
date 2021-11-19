@@ -8,7 +8,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="274dp"
+        android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="10dp"
@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
-            android:text="Carwash"
+            android:text="AAA 1234"
             android:textAlignment="viewStart"
             android:textAllCaps="true"
             android:textSize="20sp"
@@ -32,10 +32,18 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingBottom="5dp"
-            android:text="10 OCT 1010, 10:10 AM"
+            android:text="SUV"
             android:textAlignment="viewStart"
             android:textSize="14sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/contractorName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            android:text="Contrator" />
 
     </LinearLayout>
 
@@ -65,6 +73,14 @@
             android:text="Completed/Incoming"
             android:textAlignment="center"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="12 NOV" />
+
     </LinearLayout>
 
 </LinearLayout>

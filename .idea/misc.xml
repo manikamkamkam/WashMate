@@ -61,13 +61,24 @@
         <entry key="..\:/Users/Koloje/Documents/GitHub/WashMate/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/Koloje/Documents/GitHub/WashMate/app/src/main/res/layout/fragment_profile.xml" value="0.21875" />
         <entry key="..\:/Users/Koloje/Documents/GitHub/WashMate/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/appointment.xml" value="0.1828125" />
+        <entry key="app/src/main/res/layout/activity_register_user.xml" value="0.1765625" />
+        <entry key="app/src/main/res/layout/appointmentlist_row.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/contractor_activity_main.xml" value="0.1765625" />
+        <entry key="app/src/main/res/layout/contractor_fragment_profile.xml" value="0.1765625" />
+        <entry key="app/src/main/res/layout/contractor_fragment_schedule.xml" value="0.1765625" />
         <entry key="app/src/main/res/layout/contrator_fragment_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/customer_activity_main.xml" value="0.18020833333333333" />
-        <entry key="app/src/main/res/layout/customer_carwash_activity.xml" value="0.18020833333333333" />
-        <entry key="app/src/main/res/layout/customer_fragment_appointment.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/customer_addcar_activity.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/customer_carwash_activity.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/customer_fragment_appointment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/customer_fragment_home.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/customer_fragment_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/customer_history_activity.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/customer_mycars_activity.xml" value="0.1765625" />
         <entry key="app/src/main/res/layout/loading_dialog.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/payment_status_dialog.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/payment_status_fail.xml" value="0.21693840579710144" />
       </map>
     </option>
   </component>
