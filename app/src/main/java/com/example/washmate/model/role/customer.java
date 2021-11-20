@@ -1,12 +1,8 @@
 package com.example.washmate.model.role;
 
-import android.util.Log;
-
 import com.example.washmate.model.appointment;
 import com.example.washmate.model.car;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
 
 public class customer extends User {
     static customer LoggedinUser;

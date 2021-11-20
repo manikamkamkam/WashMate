@@ -29,8 +29,10 @@ public class User {
         PhoneNumber = phoneNumber;
     }
 
-    public User() {
+    public User(String fname, String age, String email) {
     }
+
+
 
     public String getUId() {
         return Uid;
