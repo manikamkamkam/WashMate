@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     tools:context=".view.customer.Appointment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
+        android:layout_width="419dp"
+        android:layout_height="55dp"
         android:background="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +22,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
 
-            android:text="Incoming Appointments"
+            android:text="Completed Appointments"
             android:textAlignment="center"
             android:textColor="@color/tiffany"
             android:textSize="20sp"

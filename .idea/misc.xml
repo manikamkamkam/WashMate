@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1953125" />
         <entry key="..\:/Users/Koloje/Documents/Android_Studio_Projects/WashMate/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23489583333333333" />
         <entry key="..\:/Users/Koloje/Documents/Android_Studio_Projects/WashMate/app/src/main/res/drawable/appointment.xml" value="0.23125" />
         <entry key="..\:/Users/Koloje/Documents/Android_Studio_Projects/WashMate/app/src/main/res/drawable/ic_launcher_background.xml" value="0.23125" />
@@ -62,12 +63,19 @@
         <entry key="..\:/Users/Koloje/Documents/GitHub/WashMate/app/src/main/res/layout/fragment_profile.xml" value="0.21875" />
         <entry key="..\:/Users/Koloje/Documents/GitHub/WashMate/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/appointment.xml" value="0.1828125" />
+        <entry key="app/src/main/res/drawable/close.xml" value="0.19635416666666666" />
         <entry key="app/src/main/res/layout/activity_register_user.xml" value="0.1765625" />
         <entry key="app/src/main/res/layout/appointmentlist_row.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/contractor_activity_main.xml" value="0.1765625" />
+        <entry key="app/src/main/res/layout/carwashrequestlist_row.xml" value="0.3296875" />
+        <entry key="app/src/main/res/layout/contractor_activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/contractor_balance_activity.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/contractor_carwashrequest_activity.xml" value="0.3296875" />
+        <entry key="app/src/main/res/layout/contractor_fragment_home.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/contractor_fragment_profile.xml" value="0.1765625" />
-        <entry key="app/src/main/res/layout/contractor_fragment_schedule.xml" value="0.1765625" />
+        <entry key="app/src/main/res/layout/contractor_fragment_schedule.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/contractor_history_activity.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/contrator_fragment_home.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/credit_activity.xml" value="0.25" />
         <entry key="app/src/main/res/layout/customer_activity_main.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/customer_addcar_activity.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/customer_carwash_activity.xml" value="0.25" />
@@ -79,6 +87,12 @@
         <entry key="app/src/main/res/layout/loading_dialog.xml" value="0.33" />
         <entry key="app/src/main/res/layout/payment_status_dialog.xml" value="0.33" />
         <entry key="app/src/main/res/layout/payment_status_fail.xml" value="0.21693840579710144" />
+        <entry key="app/src/main/res/layout/payment_status_success.xml" value="0.27717391304347827" />
+        <entry key="app/src/main/res/layout/requestdetails_dialog.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/withdraw_dialog.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/withdrawdialog.xml" value="0.2717391304347826" />
+        <entry key="app/src/main/res/layout/withdrawrequest_row.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/contractor_bottom_menu.xml" value="0.3296875" />
       </map>
     </option>
   </component>

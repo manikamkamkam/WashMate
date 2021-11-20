@@ -12,7 +12,7 @@ public class administrator extends User{
    }
 
 
-   @Override
+
    public void setloginUser() {
       LoggedinUser = this;
    }

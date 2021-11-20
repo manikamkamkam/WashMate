@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.contractor.contrator_fragment_home">
+    tools:context=".view.contractor.Home">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
 
         android:background="@drawable/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
@@ -71,7 +73,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/carwasBtn"
+                android:id="@+id/carwashBtn"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
@@ -82,7 +84,7 @@
                 android:src="@drawable/carwash" />
 
             <TextView
-                android:id="@+id/carwaslabel"
+                android:id="@+id/carwashlabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -101,7 +103,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/historyBtn"
+                android:id="@+id/balBtn"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
@@ -131,13 +133,13 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <ImageButton
-                android:id="@+id/mycarsBtn"
+                android:id="@+id/historyBtn"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:background="@null"
                 android:contentDescription="@string/app_name"
-                android:labelFor="@+id/mycarsBtn"
+                android:labelFor="@+id/historyBtn"
                 android:scaleType="centerInside"
                 android:src="@drawable/history" />
 

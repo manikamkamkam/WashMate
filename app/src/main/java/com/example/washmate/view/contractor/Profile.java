@@ -1,4 +1,4 @@
-package com.example.washmate.view.customer;
+package com.example.washmate.view.contractor;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.washmate.R;
 import com.example.washmate.model.role.User;
-import com.example.washmate.model.role.customer;
+import com.example.washmate.model.role.contractor;
 import com.example.washmate.view.customDialog.LoadingDialog;
 import com.example.washmate.view.login.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +29,7 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class Profile extends Fragment {
 
-    private final customer loginUser = customer.getLoggedinUser();
+    private final contractor loginUser = contractor.getLoggedinUser();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -104,50 +104,50 @@ public class Profile extends Fragment {
             public void onClick(View v)
             {
 
-                    LoadingDialog ld = new LoadingDialog(getActivity());
-                    loginUser.updateUserEmail(emailEditText.getText().toString(), new User.TaskOnCompletedCallBack(){
-                        @Override
-                        public void isTaskCompleted (boolean available) {
-                            if(available)
-                            {
-                                    loginUser.isPhoneNoAvailable(phoneNoEditText.getText().toString(),new User.TaskOnCompletedCallBack(){
-                                    @Override
-                                    public void isTaskCompleted(boolean available) {
-                                        if (available) {
+                LoadingDialog ld = new LoadingDialog(getActivity());
+                loginUser.updateUserEmail(emailEditText.getText().toString(), new User.TaskOnCompletedCallBack(){
+                    @Override
+                    public void isTaskCompleted(boolean available) {
+                        if(available)
+                        {
+                            loginUser.isPhoneNoAvailable(phoneNoEditText.getText().toString(),new User.TaskOnCompletedCallBack(){
+                                @Override
+                                public void isTaskCompleted(boolean available) {
+                                    if (available) {
 
-                                            loginUser.updateUserDetailsToFirebase(nameEditText.getText().toString(), emailEditText.getText().toString(), phoneNoEditText.getText().toString(), new User.TaskCallback() {
-                                                @Override
-                                                public void taskCompleted(boolean isCompleted) {
-                                                    ld.dismissDialog();
-                                                    updateView();
-                                                }
-                                            });
-                                            nameEditText.setEnabled(false);
-                                            emailEditText.setEnabled(false);
-                                            phoneNoEditText.setEnabled(false);
-                                            saveBtn.setVisibility(View.GONE);
+                                        loginUser.updateUserDetailsToFirebase(nameEditText.getText().toString(), emailEditText.getText().toString(), phoneNoEditText.getText().toString(), new User.TaskCallback() {
+                                            @Override
+                                            public void taskCompleted(boolean isCompleted) {
+                                                ld.dismissDialog();
+                                                updateView();
+                                            }
+                                        });
+                                        nameEditText.setEnabled(false);
+                                        emailEditText.setEnabled(false);
+                                        phoneNoEditText.setEnabled(false);
+                                        saveBtn.setVisibility(View.GONE);
 
 
-                                        } else {
-                                            ld.dismissDialog();
-                                            phoneNoEditText.setError("Please try another Phone Number");
-                                            Toast.makeText(getContext(), "This Phone Number is already used , please try another", Toast.LENGTH_LONG);
-                                        }
+                                    } else {
+                                        ld.dismissDialog();
+                                        phoneNoEditText.setError("Please try another Phone Number");
+                                        Toast.makeText(getContext(), "This Phone Number is already used , please try another", Toast.LENGTH_LONG);
                                     }
-                                });
+                                }
+                            });
 
-                            }
-                            else
-                            {
-                                ld.dismissDialog();
-                                emailEditText.setError("Please try another email");
-                                Toast.makeText(getContext(),"This email is already used , please try another",Toast.LENGTH_LONG);
-                            }
                         }
-                    });
-                    ld.startLoadingDialog();
-
+                        else
+                        {
+                            ld.dismissDialog();
+                            emailEditText.setError("Please try another email");
+                            Toast.makeText(getContext(),"This email is already used , please try another",Toast.LENGTH_LONG);
+                        }
                     }
+                });
+                ld.startLoadingDialog();
+
+            }
 
 
 
@@ -170,7 +170,7 @@ public class Profile extends Fragment {
                     public void onClick(View v) {
                         loginUser.loggedout();
                         startActivity(new Intent(getContext(),MainActivity.class));
-                      getActivity().finish();
+                        getActivity().finish();
                     }
                 });
                 negBtn.setOnClickListener(new View.OnClickListener() {

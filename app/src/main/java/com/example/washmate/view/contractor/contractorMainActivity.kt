@@ -14,7 +14,7 @@ class contractorMainActivity : AppCompatActivity() {
         setContentView(R.layout.contractor_activity_main)
         val navView = findViewById<BottomNavigationView>(R.id.contractorbottomNavView)
         val navController =  findNavController(R.id.contratorViewFragment)
-        AppBarConfiguration(setOf(R.id.contractor_home, R.id.contractor_schedule, R.id.contractor_schedule))
+        AppBarConfiguration(setOf(R.id.contractor_home, R.id.contractor_schedule, R.id.contractor_profile))
         navView.setupWithNavController(navController)
 
     }

@@ -85,7 +85,7 @@
                 android:src="@drawable/carwash" />
 
             <TextView
-                android:id="@+id/carwaslabel"
+                android:id="@+id/carwashlabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -110,7 +110,7 @@
                 android:layout_margin="8dp"
                 android:background="@null"
                 android:contentDescription="@string/app_name"
-                android:labelFor="@+id/historyBtn"
+                android:labelFor="@+id/mycarsBtn"
                 android:scaleType="centerInside"
                 android:src="@drawable/history" />
 

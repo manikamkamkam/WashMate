@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(documentSnapshot.getString("isCont") != null)
                 {
                     //testing email and password contractor@cont.com | customer
-                    contractor cont = new contractor(Uid,documentSnapshot.getString("FullName"),documentSnapshot.getString("UserEmail"),documentSnapshot.getString("PhoneNo"));
+                    contractor cont = new contractor(Uid,documentSnapshot.getString("FullName"),documentSnapshot.getString("UserEmail"),documentSnapshot.getString("PhoneNo"),documentSnapshot.getDouble("Balance"));
                     cont.setloginUser();
                     startActivity(new Intent(getApplicationContext(), contractorMainActivity.class));
                     finish();

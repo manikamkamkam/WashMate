@@ -4,17 +4,17 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.washmate.model.appointment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public abstract class User{
+public class User {
 
     String Uid;
     String FullName;
@@ -22,6 +22,15 @@ public abstract class User{
     String PhoneNumber;
 
 
+    public User(String uid, String fullName, String email, String phoneNumber) {
+        Uid = uid;
+        FullName = fullName;
+        Email = email;
+        PhoneNumber = phoneNumber;
+    }
+
+    public User() {
+    }
 
     public String getUId() {
         return Uid;
@@ -31,14 +40,9 @@ public abstract class User{
         Uid = userId;
     }
 
-
-
-
-    public void loggedout()
-    {
+    public void loggedout() {
         FirebaseAuth.getInstance().signOut();
     }
-
 
     public String getFullName() {
         return FullName;
@@ -64,66 +68,59 @@ public abstract class User{
         PhoneNumber = phoneNumber;
     }
 
-    public abstract void setloginUser();
 
-    public interface TaskCallback
-    {
+    public interface TaskCallback {
         public void taskCompleted(boolean isCompleted);
     }
 
 
-   public void updateUserDetailsToFirebase(String fullName,String email,String phoneNo,TaskCallback callback)
-   {
-       FirebaseFirestore.getInstance().collection("Users")
-               .document(this.getUId())
-               .update("FullName",fullName,"PhoneNo",phoneNo)
-               .addOnSuccessListener(new OnSuccessListener<Void>() {
-                   @Override
-                   public void onSuccess(Void unused) {
-                       Log.d("updateProfile", "onSuccess: "+"Updated!");
-                       setFullName(fullName);setPhoneNumber(phoneNo);
-                       callback.taskCompleted(true);
-                   }
-               }).addOnFailureListener(new OnFailureListener() {
-           @Override
-           public void onFailure(@NonNull Exception e) {
-               Log.d("updateProfile","onFailure :"+e);
-           }
-       });
+    public void updateUserDetailsToFirebase(String fullName, String email, String phoneNo, TaskCallback callback) {
+        FirebaseFirestore.getInstance().collection("Users")
+                .document(this.getUId())
+                .update("FullName", fullName, "PhoneNo", phoneNo)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("updateProfile", "onSuccess: " + "Updated!");
+                        setFullName(fullName);
+                        setPhoneNumber(phoneNo);
+                        callback.taskCompleted(true);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("updateProfile", "onFailure :" + e);
+            }
+        });
 
 
-   }
-
-
-    public interface emailCallBack {
-        void isEmailAvailable(boolean available);
     }
-    public void updateUserEmail(String email, emailCallBack emailCallBack){
-                FirebaseAuth.getInstance().getCurrentUser().updateEmail(email)
+
+    public interface TaskOnCompletedCallBack {
+        void isTaskCompleted(boolean available);
+    }
+
+    public void updateUserEmail(String email, TaskOnCompletedCallBack emailCallBack) {
+        FirebaseAuth.getInstance().getCurrentUser().updateEmail(email)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
 
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            emailCallBack.isEmailAvailable(true);
+                            emailCallBack.isTaskCompleted(true);
                             setEmail(email);
                         } else {
-                            emailCallBack.isEmailAvailable(false);
+                            emailCallBack.isTaskCompleted(false);
                             setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                         }
 
                     }
-                }) ;
+                });
 
 
     }
 
-    public interface PhoneNoCallBack
-    {
-        void isPhoneNoAvailable(boolean available);
-    }
-    public void isPhoneNoAvailable(String phoneNumber,PhoneNoCallBack phoneNoCallBack)
-    {
+    public void isPhoneNoAvailable(String phoneNumber, TaskOnCompletedCallBack phoneNoCallBack) {
         FirebaseFirestore.getInstance().collection("Users")
                 .whereEqualTo("PhoneNo", phoneNumber)
                 .get()
@@ -134,14 +131,13 @@ public abstract class User{
                         if (task.isSuccessful()) {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if(!document.getId().equals(getUId()))
-                                {
+                                if (!document.getId().equals(getUId())) {
                                     isAvailable = false;
-                                    Log.d("phoneNo", document.getId() + "uuid of current user"+ getUId()+ " => " + document.getData());
+                                    Log.d("phoneNo", document.getId() + "uuid of current user" + getUId() + " => " + document.getData());
                                 }
 
                             }
-                            phoneNoCallBack.isPhoneNoAvailable(isAvailable);
+                            phoneNoCallBack.isTaskCompleted(isAvailable);
                         } else {
 
                         }
@@ -149,4 +145,26 @@ public abstract class User{
                 });
     }
 
+    public interface getUserCallBack {
+        public void getUserCallBack(User user);
+    }
+
+    public void getUserByUserId(String custId, getUserCallBack callBack,TaskOnCompletedCallBack OncompleteCallback) {
+
+        User[] user = new User[1];
+        FirebaseFirestore.getInstance().collection("Users").document(custId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    Log.d("users", "onComplete: " + task.getResult().getData());
+                    user[0] = new User(custId, task.getResult().getString("FullName"), task.getResult().getString("UserEmail"), task.getResult().getString("PhoneNo"));
+                    callBack.getUserCallBack(user[0]);
+                }
+             OncompleteCallback.isTaskCompleted(true);
+            }
+        });
+
+
+    }
 }
+

@@ -1,10 +1,10 @@
 package com.example.washmate.model;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.washmate.model.role.contractor;
 import com.example.washmate.model.role.customer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -14,10 +14,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.ktx.Firebase;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class appointment {
     String UUId;
@@ -155,12 +153,83 @@ public appointment()
         });
     }
 
+
+    public ArrayList<appointment> getCurrentUsersOrderWithStatusIncoming(TaskCompletedCallBack callBack) {
+        ArrayList<appointment> appointments = new ArrayList<appointment>();
+        FirebaseFirestore.getInstance().collection("Appointments").whereEqualTo("inchargeContratorName", contractor.getLoggedinUser().getFullName()).whereEqualTo("status","Incoming")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                                           @Override
+                                           public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                               Log.d("appoinments", "getting appoinemtns details");
+                                               if (task.isSuccessful()) {
+                                                   for (QueryDocumentSnapshot document : task.getResult()) {
+                                                       appointments.add(new appointment(document.getId(), document.getString("date"), document.getString("time"), document.getString("carType"), document.getString("carPlateNo"), document.getString("location"), document.getString("price"), document.getString("customerId"), document.getString("inchargeContratorName"), document.getString("status")));
+                                                       Log.d("appoinments", "date"+document.getData());
+                                                   }
+                                                   callBack.isTaskCompleted(true);
+
+                                               }
+                                           }
+
+                                       }
+                );
+        return appointments;
+    }
+
+    public ArrayList<appointment> getCurrentUserOrdersWithStatusCompleted(TaskCompletedCallBack callBack) {
+        ArrayList<appointment> appointments = new ArrayList<appointment>();
+        FirebaseFirestore.getInstance().collection("Appointments").whereEqualTo("inchargeContratorName", contractor.getLoggedinUser().getFullName()).whereEqualTo("status","Completed")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                                           @Override
+                                           public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                               Log.d("appoinments", "getting appoinemtns details");
+                                               if (task.isSuccessful()) {
+                                                   for (QueryDocumentSnapshot document : task.getResult()) {
+                                                       appointments.add(new appointment(document.getId(), document.getString("date"), document.getString("time"), document.getString("carType"), document.getString("carPlateNo"), document.getString("location"), document.getString("price"), document.getString("customerId"), document.getString("inchargeContratorName"), document.getString("status")));
+                                                       Log.d("appoinments", "date"+document.getData());
+                                                   }
+                                                   callBack.isTaskCompleted(true);
+
+                                               }
+                                           }
+
+                                       }
+                );
+        return appointments;
+    }
+
     public interface TaskCompletedCallBack
     {
         public void isTaskCompleted(boolean isCompleted);
     }
 
+    public ArrayList<appointment> getAllAppoinmentWithStatusIncoming(TaskCompletedCallBack callBack)
+    {
+        ArrayList<appointment> appointments = new ArrayList<appointment>();
+        FirebaseFirestore.getInstance().collection("Appointments").whereEqualTo("status","Incoming").whereEqualTo("inchargeContratorName",null)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Log.d("appoinments", "getting appoinemtns details");
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                appointments.add(new appointment(document.getId(), document.getString("date"), document.getString("time"), document.getString("carType"), document.getString("carPlateNo"), document.getString("location"), document.getString("price"), document.getString("customerId"), document.getString("inchargeContratorName"), document.getString("status")));
+                                Log.d("appoinments", "date"+document.getData());
+                            }
+                            callBack.isTaskCompleted(true);
+
+                        }
+                    }
+
+                });
+                return appointments;
+    }
     public ArrayList<appointment> getCurrentUsersAppoinmentWithStatusPending(TaskCompletedCallBack callBack) {
         ArrayList<appointment> appointments = new ArrayList<appointment>();
         FirebaseFirestore.getInstance().collection("Appointments").whereEqualTo("customerId", customer.getLoggedinUser().getUId()).whereEqualTo("status","Incoming")
@@ -206,5 +275,17 @@ public appointment()
                                        }
                 );
         return appointments;
+    }
+
+    public void setInchargeContractor(String contractorName,TaskCompletedCallBack callBack)
+    {
+        setInchargeContratorName(contractorName);
+
+        FirebaseFirestore.getInstance().collection("Appointments").document(getUUId()).update("inchargeContratorName",contractorName).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                callBack.isTaskCompleted(true);
+            }
+        });
     }
 }

@@ -32,6 +32,11 @@
             android:exported="true"
             android:label="@string/app_name"
             />
+        <activity android:name=".view.contractor.withDraw"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="true"
+            android:label="@string/app_name"
+            />
         <activity android:name=".view.customer.addCarActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="true"
@@ -47,7 +52,22 @@
             android:exported="true"
             android:label="@string/app_name"
             />
+        <activity android:name=".view.contractor.HistoryActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="true"
+            android:label="@string/app_name"
+            />
         <activity android:name=".view.customer.HistoryActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="true"
+            android:label="@string/app_name"
+            />
+        <activity android:name=".view.contractor.CarwashRequest"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="true"
+            android:label="@string/app_name"
+            />
+        <activity android:name=".view.aboutUs"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="true"
             android:label="@string/app_name"

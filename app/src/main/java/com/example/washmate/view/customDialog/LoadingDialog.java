@@ -8,6 +8,7 @@ import com.example.washmate.R;
 
 public class LoadingDialog {
     Activity activity;
+
     AlertDialog dialog;
 
     public LoadingDialog(Activity activity)

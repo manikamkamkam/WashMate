@@ -1,19 +1,21 @@
-package com.example.washmate.view.customer;
+package com.example.washmate.view.contractor;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import com.example.washmate.R;
-import com.example.washmate.model.role.customer;
+import com.example.washmate.model.WithDrawRequest;
+import com.example.washmate.model.role.contractor;
 import com.example.washmate.view.aboutUs;
 
 /**
@@ -22,12 +24,12 @@ import com.example.washmate.view.aboutUs;
  * create an instance of this fragment.
  */
 public class Home extends Fragment {
-
+    private final contractor loginUser = contractor.getLoggedinUser();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private final customer loginUser = customer.getLoggedinUser();
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -42,7 +44,7 @@ public class Home extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Home.
+     * @return A new instance of fragment contrator_fragment_home.
      */
     // TODO: Rename and change types and number of parameters
     public static Home newInstance(String param1, String param2) {
@@ -66,38 +68,22 @@ public class Home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.customer_fragment_home, container, false);
+
+        return inflater.inflate(R.layout.contractor_fragment_home, container, false);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        ImageButton carWashBtn = getView().findViewById(R.id.carwasBtn);
-        ImageButton myCarsBtn = getView().findViewById(R.id.mycarsBtn);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
+        ImageButton carwashRequestBtn = getView().findViewById(R.id.carwashBtn);
         ImageButton historyBtn = getView().findViewById(R.id.historyBtn);
         ImageButton abtUsBtn = getView().findViewById(R.id.AboutUsBtn);
+        ImageButton balBtn = getView().findViewById(R.id.balBtn);
         ((TextView)getView().findViewById(R.id.header_username)).setText(loginUser.getFullName());
 
-
-        carWashBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(),CarwashActivity.class));
-            }
-        });
-        myCarsBtn.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(),myCarsActivity.class));
-            }
-        });
-        historyBtn.setOnClickListener(new View.OnClickListener() {
+        carwashRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),HistoryActivity.class));
+                startActivity(new Intent(getContext(),CarwashRequest.class));
             }
         });
         abtUsBtn.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +92,18 @@ public class Home extends Fragment {
                 startActivity(new Intent(getActivity(), aboutUs.class));
             }
         });
-
+        historyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),HistoryActivity.class));
+            }
+        });
+        balBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), withDraw.class));
+            }
+        });
 
     }
 }
