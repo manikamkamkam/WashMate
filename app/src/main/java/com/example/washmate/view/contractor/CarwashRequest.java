@@ -67,7 +67,7 @@ public class CarwashRequest extends AppCompatActivity  {
           },new User.TaskOnCompletedCallBack(){
             @Override
             public void isTaskCompleted(boolean available) {
-              updateView();
+              updateView();  ld.dismissDialog();
             }
         });
         }
@@ -78,7 +78,7 @@ public class CarwashRequest extends AppCompatActivity  {
     private void updateView() {
        appointmentlistadapter adapter = new appointmentlistadapter(this, R.layout.carwashrequestlist_row, requests,userInfo);
         requestlistView.setAdapter(adapter);
-        ld.dismissDialog();
+
     }
 
 
