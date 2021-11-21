@@ -36,6 +36,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //initializing firebase connection and edittexts and textviews
     private TextView register;
     private EditText mEmail, mPassword;
     private Button mloginBtn;
