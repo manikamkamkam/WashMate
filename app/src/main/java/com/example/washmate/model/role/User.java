@@ -29,9 +29,14 @@ public class User {
         PhoneNumber = phoneNumber;
     }
 
-    public User(String fname, String age, String email) {
+    public User(String fname, String email,String phoneNumber) {
+        FullName = fname;
+        Email = email;
+        PhoneNumber = phoneNumber;
     }
 
+    public User() {
+    }
 
 
     public String getUId() {

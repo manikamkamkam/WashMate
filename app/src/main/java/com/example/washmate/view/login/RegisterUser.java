@@ -21,14 +21,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.w3c.dom.Document;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
 
     private TextView logintitle, registerbutton;
-    private EditText editTextFName, editTextAge, editTextEmail, editTextPass;
+    private EditText editTextFName, editTextEmail, editTextPass;
     private Spinner choicereg;
     private ProgressBar progressBar;
 
@@ -52,7 +60,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         registerbutton.setOnClickListener(this);
 
         editTextEmail = (EditText) findViewById(R.id.emailreg);
-        editTextAge = (EditText) findViewById(R.id.agereg);
         editTextFName = (EditText) findViewById(R.id.fnamereg);
         editTextPass = (EditText) findViewById(R.id.pasreg);
 
@@ -75,19 +82,12 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
     private void registerbutton(){
         String fname = editTextFName.getText().toString().trim();
-        String age = editTextAge.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPass.getText().toString().trim();
-
+        String role = choicereg.getSelectedItem().toString().trim();
         if(fname.isEmpty()){
             editTextFName.setError("Full name is required");
             editTextFName.requestFocus();
-            return;
-        }
-
-        if(age.isEmpty()){
-            editTextAge.setError("Age is required");
-            editTextAge.requestFocus();
             return;
         }
 
@@ -121,23 +121,25 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(fname, age, email);
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                           DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(user.getUid());
+                            Map<String,Object> userInfo = new HashMap<>();
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(RegisterUser.this, "User has been registered", Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.VISIBLE);
-                                        
-                                    }else{
-                                        Toast.makeText(RegisterUser.this, "Failed to register", Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
-                                }
-                            });
+                                 userInfo.put("FullName",fname);
+                                 userInfo.put("UserEmail",email);
+                                 userInfo.put("PhoneNo"," ");
+
+                                 if(role.equals("Contractor"))
+                                     userInfo.put("isCont","1");userInfo.put("Balance",0.00);
+                                 if(role.equals("Customer"))
+                                     userInfo.put("isCust","1");
+
+                                 df.set(userInfo);
+                                 progressBar.setVisibility(View.GONE);
+                                 finish();
+                            Toast.makeText(RegisterUser.this, "Successfully registered , Please Login", Toast.LENGTH_SHORT).show();
+
+
                         }else{
                             Toast.makeText(RegisterUser.this, "Failed to register", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);

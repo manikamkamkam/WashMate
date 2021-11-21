@@ -59,7 +59,7 @@ public class CarwashRequest extends AppCompatActivity  {
     private void getUserInfoforApppoinemnt()
     {  User temp;
         for(appointment request : requests) {
-        new User(fname, age, email).getUserByUserId(request.getCustomerId(), new User.getUserCallBack() {
+        new User().getUserByUserId(request.getCustomerId(), new User.getUserCallBack() {
               @Override
               public void getUserCallBack(User user) {
                   userInfo.add(user);

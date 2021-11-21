@@ -5,7 +5,7 @@ public class administrator extends User{
    static administrator LoggedinUser;
    public administrator(String Uid,String name,String email,String phoneNo)
    {
-      super(fname, age, email);
+
       setUId(Uid);
       setEmail(email);
       setFullName(name);

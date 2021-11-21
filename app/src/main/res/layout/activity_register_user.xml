@@ -48,67 +48,50 @@
         />
 
     <EditText
-        android:id="@+id/agereg"
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="255dp"
-        android:inputType="date"
-        android:hint="Date of Birth"
-        android:textSize="28sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <EditText
         android:id="@+id/emailreg"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="325dp"
-        android:inputType="textEmailAddress"
+        android:layout_marginTop="272dp"
         android:hint="Email Address"
+        android:inputType="textEmailAddress"
         android:textSize="28sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <EditText
-        android:id="@+id/pasreg"
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="395dp"
-        android:inputType="textPassword"
-        android:hint="Password"
-        android:textSize="28sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/rolechoice"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="465dp"
+        android:layout_marginTop="412dp"
         android:hint="Choose a role"
         android:textSize="28sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/pasreg"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="340dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/rolereg"
         android:layout_width="191dp"
         android:layout_height="44dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="496dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        android:layout_marginTop="500dp"
-        android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/registerbutton"
