@@ -21,6 +21,7 @@ import com.example.washmate.model.role.administrator;
 import com.example.washmate.model.role.contractor;
 import com.example.washmate.model.role.User;
 import com.example.washmate.model.role.customer;
+import com.example.washmate.view.admin.adminMainActivity;
 import com.example.washmate.view.contractor.contractorMainActivity;
 import com.example.washmate.view.customer.CustomerMainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(documentSnapshot.getString("isAdmin") != null)
                 {
-                    //startActivity(new Intent(getApplicationContext(),null));
+                    startActivity(new Intent(getApplicationContext(), adminMainActivity.class));
                 }
                 if(documentSnapshot.getString("isCont") != null)
                 {

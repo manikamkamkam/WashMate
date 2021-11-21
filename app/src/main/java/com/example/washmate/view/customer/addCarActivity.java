@@ -32,7 +32,7 @@ public class addCarActivity extends AppCompatActivity {
         EditText note = findViewById(R.id.noteInput);
         LoadingDialog ld = new LoadingDialog(this);
 
-        String[] items = new String[]{"Select Your Car Type","Suv", "COUPE", "HATCHBACK"};
+        String[] items = new String[]{"Select Your Car Type","SUV", "COUPE", "HATCHBACK"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 

@@ -72,6 +72,21 @@
             android:exported="true"
             android:label="@string/app_name"
             />
+        <activity android:name=".view.admin.adminMainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="true"
+            android:label="@string/app_name"
+            />
+        <activity android:name=".view.admin.refundrequest"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="true"
+            android:label="@string/app_name"
+            />
+        <activity android:name=".view.admin.cancelAppoinment"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="true"
+            android:label="@string/app_name"
+            />
     </application>
 
 </manifest>
