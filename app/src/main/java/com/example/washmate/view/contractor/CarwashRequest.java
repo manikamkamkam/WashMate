@@ -50,7 +50,7 @@ public class CarwashRequest extends AppCompatActivity  {
 
             @Override
             public void isTaskCompleted(boolean isCompleted) {
-            getUserInfoforApppoinemnt();
+            getUserInfoforApppoinemnt(); ld.dismissDialog();
             }
         });
     }
@@ -67,7 +67,7 @@ public class CarwashRequest extends AppCompatActivity  {
           },new User.TaskOnCompletedCallBack(){
             @Override
             public void isTaskCompleted(boolean available) {
-              updateView();  ld.dismissDialog();
+              updateView();
             }
         });
         }
