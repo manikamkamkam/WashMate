@@ -66,8 +66,8 @@
         <entry key="app/src/main/res/drawable/appointment.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/activity_register_user.xml" value="0.1765625" />
         <entry key="app/src/main/res/layout/admin_activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/admin_approve_refund.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/admin_cancel_appointment.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/admin_approve_refund.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/admin_cancel_appointment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/appointmentlist_row.xml" value="0.33" />
         <entry key="app/src/main/res/layout/contractor_activity_main.xml" value="0.1765625" />
         <entry key="app/src/main/res/layout/contractor_fragment_home.xml" value="0.18020833333333333" />

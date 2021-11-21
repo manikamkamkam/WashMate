@@ -1,7 +1,10 @@
 package com.example.washmate.view.admin;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
@@ -21,5 +24,15 @@ public class cancelAppoinment extends AppCompatActivity {
         String items[] = {"Choose an appoinment to cancel","This is a sample"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         appoinmentSpinner.setAdapter(adapter);
+
+        ImageView backarraow = findViewById(R.id.backArrow);
+
+        backarraow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 }

@@ -71,7 +71,7 @@
         android:ems="10"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:hint="Pick a Date"
+        android:hint="slected request date"
         android:inputType="date"
         android:minHeight="48dp" />
 
@@ -84,7 +84,7 @@
         android:layout_marginTop="25dp"
         android:ems="10"
         android:focusableInTouchMode="false"
-        android:hint="Pick a Time"
+        android:hint="selected request time"
         android:inputType="textPersonName|time"
         android:minHeight="48dp" />
 
