@@ -1,6 +1,7 @@
 package com.example.washmate.model.role;
 
 import android.util.Log;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 
@@ -29,7 +30,7 @@ public class User {
         PhoneNumber = phoneNumber;
     }
 
-    public User(String fname, String age, String email) {
+    public User(String fname, String age, String email, Spinner role) {
     }
 
 

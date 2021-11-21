@@ -8,7 +8,7 @@ public class contractor extends User{
     double balance;
     public contractor(String Uid,String name,String email,String phoneNo,double balance)
     {
-        super(fname, age, email);
+        super(fname, age, email, role);
         setUId(Uid);
         setEmail(email);
         setFullName(name);

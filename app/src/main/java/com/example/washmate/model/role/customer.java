@@ -10,7 +10,7 @@ public class customer extends User {
    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     public customer(String Uid,String name,String email,String phoneNo)
     {
-        super(fname, age, email);
+        super(fname, age, email, role);
         setUId(Uid);
         setEmail(email);
         setFullName(name);
